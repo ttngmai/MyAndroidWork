@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:ems="15"
         android:gravity="end"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textSize="40dp" />
 
     <TableLayout

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,6 @@ public class Main2Activity extends AppCompatActivity {
     int buff1 = 0;
     int buff2 = 0;
     String op = "";
-    int result = 0;
 
     // 과제 : 계산기 앱 만들기
     @Override
@@ -22,7 +22,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        et =findViewById(R.id.et);
+        et = findViewById(R.id.et);
 
         Button btn0 = findViewById(R.id.btn0);
         Button btn1 = findViewById(R.id.btn1);
@@ -48,7 +48,7 @@ public class Main2Activity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String text = (String)((Button)v).getText();  // getText() 는 CharSequence 객체 리턴
+                String text = (String)((Button)v).getText();
                 String msg = String.format("%s 버튼 클릭", text);
                 Log.d("myapp", msg);
                 et.setText(et.getText().append(name));
@@ -74,11 +74,10 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("myapp", "Clear 버튼이 클릭 되었습니다");
-                et.setText("");
                 buff1 = 0;
                 buff2 = 0;
                 op = "";
-                result = 0;
+                et.setText("");
             }
         });
 
@@ -86,7 +85,11 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("myapp", "÷ 버튼이 클릭 되었습니다");
-                buff1 = Integer.parseInt(et.getText().toString());
+                if(!(op.equals(""))) {
+                    PreCalc();
+                } else {
+                    buff1 = Integer.parseInt(et.getText().toString());
+                }
                 et.setText("");
                 op = "Div";
             }
@@ -96,7 +99,11 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("myapp", "× 버튼이 클릭 되었습니다");
-                buff1 = Integer.parseInt(et.getText().toString());
+                if(!(op.equals(""))) {
+                    PreCalc();
+                } else {
+                    buff1 = Integer.parseInt(et.getText().toString());
+                }
                 et.setText("");
                 op = "Mul";
             }
@@ -106,7 +113,11 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("myapp", "- 버튼이 클릭 되었습니다");
-                buff1 = Integer.parseInt(et.getText().toString());
+                if(!(op.equals(""))) {
+                    PreCalc();
+                } else {
+                    buff1 = Integer.parseInt(et.getText().toString());
+                }
                 et.setText("");
                 op = "Sub";
             }
@@ -116,7 +127,11 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("myapp", "+ 버튼이 클릭 되었습니다");
-                buff1 = Integer.parseInt(et.getText().toString());
+                if(!(op.equals(""))) {
+                    PreCalc();
+                } else {
+                    buff1 = Integer.parseInt(et.getText().toString());
+                }
                 et.setText("");
                 op = "Add";
             }
@@ -125,31 +140,34 @@ public class Main2Activity extends AppCompatActivity {
         btnEql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buff2 = Integer.parseInt(et.getText().toString());
-                switch (op) {
-                    case "Div":
-                        if(buff1 != 0 && buff2 != 0) {
-                            result = buff1 / buff2;
-                            break;
-                        }
-                    case "Mul" :
-                        result = buff1 * buff2;
-                        break;
-                    case "Sub" :
-                        result = buff1 - buff2;
-                        break;
-                    case "Add" :
-                        result = buff1 + buff2;
-                        break;
-                }
-                et.setText(Integer.toString(result));
+                PreCalc();
+                et.setText(Integer.toString(buff1));
                 buff1 = 0;
                 buff2 = 0;
                 op = "";
-                result = 0;
             }
         });
 
     } // end onCreate
+
+    public void PreCalc() {
+        buff2 = Integer.parseInt(et.getText().toString());
+        switch (op) {
+            case "Div":
+                if(buff1 != 0 && buff2 != 0) {
+                    buff1 /= buff2;
+                    break;
+                }
+            case "Mul" :
+                buff1 *= buff2;
+                break;
+            case "Sub" :
+                buff1 -= buff2;
+                break;
+            case "Add" :
+                buff1 += buff2;
+                break;
+        }
+    }
 
 } // end Activity
