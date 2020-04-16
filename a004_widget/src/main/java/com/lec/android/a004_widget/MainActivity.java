@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             // keyCode : 눌린 키의 코드값
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                tvResult.setText(  ((EditText)v).getText().toString() );
+                tvResult.setText(((EditText)v).getText().toString());
                 return false;
             }
         });

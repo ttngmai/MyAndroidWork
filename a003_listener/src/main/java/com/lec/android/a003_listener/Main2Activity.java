@@ -65,15 +65,11 @@ public class Main2Activity extends AppCompatActivity {
         btn7.setOnClickListener(new CalcBtnListener("7"));
         btn8.setOnClickListener(new CalcBtnListener("8"));
         btn9.setOnClickListener(new CalcBtnListener("9"));
-        btnDiv.setOnClickListener(new CalcBtnListener("÷"));
-        btnMul.setOnClickListener(new CalcBtnListener("×"));
-        btnSub.setOnClickListener(new CalcBtnListener("-"));
-        btnAdd.setOnClickListener(new CalcBtnListener("+"));
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("myapp", "Clear 버튼이 클릭 되었습니다");
+                Log.d("myapp", "Clear 버튼 클릭");
                 buff1 = 0;
                 buff2 = 0;
                 op = "";
@@ -84,7 +80,7 @@ public class Main2Activity extends AppCompatActivity {
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("myapp", "÷ 버튼이 클릭 되었습니다");
+                Log.d("myapp", "÷ 버튼 클릭");
                 if(!(op.equals(""))) {
                     PreCalc();
                 } else {
@@ -98,7 +94,7 @@ public class Main2Activity extends AppCompatActivity {
         btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("myapp", "× 버튼이 클릭 되었습니다");
+                Log.d("myapp", "× 버튼 클릭");
                 if(!(op.equals(""))) {
                     PreCalc();
                 } else {
@@ -112,7 +108,7 @@ public class Main2Activity extends AppCompatActivity {
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("myapp", "- 버튼이 클릭 되었습니다");
+                Log.d("myapp", "- 버튼 클릭");
                 if(!(op.equals(""))) {
                     PreCalc();
                 } else {
@@ -126,7 +122,7 @@ public class Main2Activity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("myapp", "+ 버튼이 클릭 되었습니다");
+                Log.d("myapp", "+ 버튼 클릭");
                 if(!(op.equals(""))) {
                     PreCalc();
                 } else {
