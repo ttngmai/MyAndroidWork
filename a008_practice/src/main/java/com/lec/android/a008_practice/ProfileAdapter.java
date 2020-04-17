@@ -1,5 +1,6 @@
 package com.lec.android.a008_practice;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater inf = LayoutInflater.from(parent.getContext());
         View itemView = inf.inflate(R.layout.item, parent, false);
 
@@ -32,16 +32,15 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Profile item = items.get(position);
-
+        holder.setItem(item);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvName, tvAge, tvAddr;
         ImageButton btnDelItem;
 
@@ -54,6 +53,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 
             btnDelItem = itemView.findViewById(R.id.btnDelItem);
 
+            // 삭제 버튼 누르면 item 삭제
             btnDelItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -61,6 +61,26 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                     adapter.notifyDataSetChanged();
                 }
             });
+
+            // item 클릭하면 상세페이지로 이동
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+
+                    Intent intent = new Intent(v.getContext(), ProfileDetail.class);
+
+                    intent.putExtra("pf", adapter.getItem(position));
+
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
+
+        public void setItem(Profile item) {
+            tvName.setText(item.getName());
+            tvAge.setText(item.getAge());
+            tvAddr.setText(item.getAddr());
         }
 
     } // end ViewHolder
