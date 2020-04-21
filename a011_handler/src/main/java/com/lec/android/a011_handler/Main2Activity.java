@@ -171,6 +171,7 @@ class BackThread3 extends Thread {
 
 // 방법4 : 메인스레드의 Handler 를 직접 사용할 수 없는 분리된 작업 스레드
 class BackThread4 extends Thread {
+
     int backValue = 0;
     Handler handler;
 

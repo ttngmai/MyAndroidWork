@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnVib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(5000); // 지정시간동안 진동
+                vibrator.vibrate(5000); // 지정시간 동안 진동
             }
         });
 
@@ -42,13 +42,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 long [] pattern = {100, 300, 100, 700, 300, 2000}; // ms
-                                // 대기, 진동, 대기, 진동...
-                // 짝수인덱스 : 대기
                 // 홀수인덱스 : 진동
+                // 짝수인덱스 : 대기
                 vibrator.vibrate(pattern, // 진동패턴 (배열)
-                        -1); // 반복
-                // 0 : 무한반복, -1 : 반복 없음
-                // 양의 정수 : 진동패턴배열의 해당 인덱스로부터 진동 무한 반복.
+                        -1);       // 0 : 무한반복, -1 : 반복 없음
+                // 양의 정수: 진동패턴 배열의 해당 인덱스로부터 진동 무한 반복
             }
         });
 
