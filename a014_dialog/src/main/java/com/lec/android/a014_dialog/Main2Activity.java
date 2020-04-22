@@ -17,8 +17,8 @@ public class Main2Activity extends AppCompatActivity {
     // 다이얼로그의 ID를 보기 좋은 상수로 선언해서 사용한다
     final int DIALOG_TEXT = 1;
     final int DIALOG_LIST = 2; // 리스트 형식의 다이얼로그 ID
-    final int DIALOG_RADIO= 3; // 하나만 선택할 수 있는 다이얼로그 ID
-    final int DIALOG_MULTICHOICE= 4;
+    final int DIALOG_RADIO = 3; // 하나만 선택할 수 있는 다이얼로그 ID
+    final int DIALOG_MULTICHOICE = 4;
 
     TextView tvResult;
 
