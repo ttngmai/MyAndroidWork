@@ -161,7 +161,7 @@ public class Main2Activity extends AppCompatActivity {
             return false;
         } else {
             // 읽기 쓰기 모두 안됨
-            msg = "외부메로리 읽기쓰기 모두 안됨 : " + state;
+            msg = "외부메모리 읽기쓰기 모두 안됨 : " + state;
             Log.d("myapp", msg);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return false;
